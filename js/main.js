@@ -1,6 +1,7 @@
-import './style.css'
+import '../style.css'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+import { MouseMeshInteraction } from './three_mmi'
 
 const scene = new THREE.Scene()
 const camera = new THREE.PerspectiveCamera(
@@ -66,6 +67,12 @@ const instagramMesh = new THREE.Mesh(
   new THREE.MeshBasicMaterial({ map: instagram, color: 0xffffff })
 )
 
+githubMesh.name = 'github'
+linkedinMesh.name = 'linkedin'
+emailMesh.name = 'email'
+twitterMesh.name = 'twitter'
+mediumMesh.name = 'medium'
+
 rahulMesh.position.set(0, 20, -100)
 emailMesh.position.set(-40, -5, 20)
 githubMesh.position.set(-20, -5, 20)
@@ -99,15 +106,35 @@ scene.add(pointLight)
 var ambientLight = new THREE.AmbientLight(0xffffff)
 scene.add(ambientLight)
 
+var mmi = new MouseMeshInteraction(scene, camera)
+
+mmi.addHandler('github', 'click', function (e) {
+  window.open('https://github.com/RGTechno')
+})
+mmi.addHandler('linkedin', 'click', function (e) {
+  window.open('https://www.linkedin.com/in/rgtechno/')
+})
+mmi.addHandler('medium', 'click', function (e) {
+  window.open('https://rgtechno.medium.com/')
+})
+mmi.addHandler('twitter', 'click', function (e) {
+  window.open('https://twitter.com/_rgtechno_')
+})
+mmi.addHandler('email', 'click', function (e) {
+  window.open('mailto:w.rahulgandhi@gmail.com')
+})
+
 //grid helper
 // var gridHelper = new THREE.GridHelper(200, 50)
 // scene.add(gridHelper)
 
 //orbit controls
 var controls = new OrbitControls(camera, renderer.domElement)
+controls.minDistance = 150
+controls.maxDistance = 300
 
 function addStar() {
-  let geometry = new THREE.SphereGeometry(0.05, 24, 24)
+  let geometry = new THREE.SphereGeometry(0.1)
   let material = new THREE.MeshStandardMaterial({ color: 0xffffff })
 
   let star = new THREE.Mesh(geometry, material)
@@ -120,16 +147,18 @@ function addStar() {
   scene.add(star)
 }
 
-Array(500).fill().forEach(addStar)
+Array(1500).fill().forEach(addStar)
 
 function animate() {
   requestAnimationFrame(animate)
 
   rahulMesh.rotation.x += 0.002
-  rahulMesh.rotation.y -= 0.01
+  rahulMesh.rotation.y -= 0.02
   rahulMesh.rotation.z += 0.003
 
   controls.update() //updates camera pers
+
+  mmi.update()
 
   renderer.render(scene, camera)
 }
