@@ -1,5 +1,3 @@
-import * as THREE from 'three'
-
 /*
 	Github: https://github.com/danielblagy/three_mmi
 	

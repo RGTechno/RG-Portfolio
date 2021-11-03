@@ -1,8 +1,7 @@
-import '../style.css'
-import * as THREE from 'three'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-import { MouseMeshInteraction } from './three_mmi'
-
+// import * as THREE from 'three'
+// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+import { MouseMeshInteraction } from './three_mmi.js'
+import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/controls/OrbitControls.js'
 const scene = new THREE.Scene()
 const camera = new THREE.PerspectiveCamera(
   45,
@@ -147,7 +146,7 @@ function addStar() {
   scene.add(star)
 }
 
-Array(1500).fill().forEach(addStar)
+Array(500).fill().forEach(addStar)
 
 function animate() {
   requestAnimationFrame(animate)
