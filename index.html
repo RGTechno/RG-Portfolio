@@ -6,16 +6,89 @@
   <link rel="icon" href="./images/rahul.jpg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rahul Gandhi | Web Portfolio</title>
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+    integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap" rel="stylesheet">
+
+  <!-- External CSS -->
   <link rel="stylesheet" href="./style.css">
+
 </head>
 
 <body>
+  <section class="intro">
+    <div id="me"></div>
+    <div class="socialDiv">
+      <span class="tilt" data-tilt>
+        <a class="socials" href="mailto:w.rahulgandhi@gmail.com" target="blank">
+          <i class="socialIcon fa-solid fa-envelope fa-xl"></i>
+          Email
+        </a>
+      </span>
+      <span class="tilt" data-tilt>
+        <a class="socials" href="https://github.com/RGTechno" target="blank">
+          <i class="fa-brands fa-github fa-xl"></i>
+          Github
+        </a>
+      </span>
+      <span class="tilt" data-tilt>
+        <a class="socials" href="https://www.linkedin.com/in/rgtechno/" target="blank">
+          <i class="fa-brands fa-linkedin fa-xl"></i>
+          Linkedin
+        </a>
+      </span>
+    </div>
+
+    <div class="socialDiv">
+      <span class="tilt" data-tilt>
+        <a class="socials" href="https://twitter.com/_rgtechno_" target="blank">
+          <i class="fa-brands fa-twitter fa-xl"></i>
+          Twitter
+        </a>
+      </span>
+      <span class="tilt" data-tilt>
+        <a class="socials" href="https://rgtechno.medium.com/" target="blank">
+          <i class="fa-brands fa-medium fa-xl"></i>
+          Medium
+        </a>
+      </span>
+      <span class="tilt" data-tilt>
+        <a class="socials" href="https://bit.ly/rahulgandhiresume" target="blank">
+          <i class="socialIcon fa-solid fa-file fa-xl"></i>
+          Resume
+        </a>
+      </span>
+    </div>
+
+  </section>
   <canvas id="app"></canvas>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.js"
-    integrity="sha512-NLtnLBS9Q2w7GKK9rKxdtgL7rA7CAS85uC/0xd9im4J/yOL4F9ZVlv634NAM7run8hz3wI2GabaA6vv8vJtHiQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- THREE JS CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r122/three.js"
+    integrity="sha512-iaZ8D6RzguOWQ+B5SLJCHPid3/2UaVIFnsNJHy068pv3r5G6kYOe+XufLqd6qNrQmaHeYR0iVyu2xkXB2llnMg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer">
+    </script>
+
+  <!-- JQUERY CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- Typwriter -->
+  <script src="https://unpkg.com/typeit@8.0.2/dist/index.umd.js"></script>
+
+  <!-- External JS -->
   <script type="module" src="./js/main.js"></script>
   <script type="module" src="./js/three_mmi.js"></script>
+
+  <!-- Tilt.JS CDN -->
+  <script src="https://unpkg.com/tilt.js@1.1.21/dest/tilt.jquery.min.js"></script>
+
 </body>
 
 </html>

@@ -1,10 +1,15 @@
-// import * as THREE from 'three'
-// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-import { MouseMeshInteraction } from './three_mmi.js'
-import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/controls/OrbitControls.js'
+// import { MouseMeshInteraction } from './three_mmi.js'
+//import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/controls/OrbitControls.js'
+
+new TypeIt('#me', {
+  strings: ['Ayo!!! myself Rahul Gandhi'],
+  loop: true,
+}).go()
+
+// THREE JS
 const scene = new THREE.Scene()
 const camera = new THREE.PerspectiveCamera(
-  45,
+  75,
   window.outerWidth / window.outerHeight,
   0.1,
   1000
@@ -13,151 +18,57 @@ const renderer = new THREE.WebGLRenderer({
   canvas: document.querySelector('#app'),
 })
 
+camera.position.z = 1
+camera.rotation.x = Math.PI / 2
+
 renderer.setPixelRatio(window.devicePixelRatio)
 renderer.setSize(window.innerWidth, window.innerHeight)
 
-// camera.position.x = 30
-camera.position.y = 45
-camera.position.z = 135
+const cometsGeometry = new THREE.Geometry()
 
-const geometry = new THREE.BoxGeometry(10, 10, 20, 30, 20)
-const material = new THREE.MeshStandardMaterial({
-  color: 0xff6347,
-})
-
-// const cube = new THREE.Mesh(geometry, material)
-// cube.position.set(15,0,15)
-// scene.add(cube)
-const rahul_image = new THREE.TextureLoader().load('./images/rahul.jpg')
-const twinklebg = new THREE.TextureLoader().load('./images/twinklebg.jpg')
-const github = new THREE.TextureLoader().load('./images/github.png')
-const linkedin = new THREE.TextureLoader().load('./images/linkedin.png')
-const twitter = new THREE.TextureLoader().load('./images/twitter.png')
-const instagram = new THREE.TextureLoader().load('./images/instagram.png')
-const email = new THREE.TextureLoader().load('./images/email.jpg')
-const medium = new THREE.TextureLoader().load('./images/medium.png')
-
-const rahulMesh = new THREE.Mesh(
-  new THREE.BoxGeometry(40, 40, 40),
-  new THREE.MeshBasicMaterial({ map: rahul_image })
-)
-const githubMesh = new THREE.Mesh(
-  new THREE.BoxGeometry(10, 10, 10),
-  new THREE.MeshBasicMaterial({ map: github, color: 0xffffff })
-)
-const linkedinMesh = new THREE.Mesh(
-  new THREE.BoxGeometry(10, 10, 10),
-  new THREE.MeshBasicMaterial({ map: linkedin, color: 0xffffff })
-)
-const mediumMesh = new THREE.Mesh(
-  new THREE.BoxGeometry(10, 10, 10),
-  new THREE.MeshBasicMaterial({ map: medium, color: 0xffffff })
-)
-const emailMesh = new THREE.Mesh(
-  new THREE.BoxGeometry(10, 10, 10),
-  new THREE.MeshBasicMaterial({ map: email, color: 0xffffff })
-)
-const twitterMesh = new THREE.Mesh(
-  new THREE.BoxGeometry(10, 10, 10),
-  new THREE.MeshBasicMaterial({ map: twitter, color: 0xffffff })
-)
-const instagramMesh = new THREE.Mesh(
-  new THREE.BoxGeometry(10, 10, 10),
-  new THREE.MeshBasicMaterial({ map: instagram, color: 0xffffff })
-)
-
-githubMesh.name = 'github'
-linkedinMesh.name = 'linkedin'
-emailMesh.name = 'email'
-twitterMesh.name = 'twitter'
-mediumMesh.name = 'medium'
-
-rahulMesh.position.set(0, 20, -100)
-emailMesh.position.set(-40, -5, 20)
-githubMesh.position.set(-20, -5, 20)
-linkedinMesh.position.set(0, -5, 20)
-mediumMesh.position.set(20, -5, 20)
-twitterMesh.position.set(40, -5, 20)
-instagramMesh.position.set(60, -5, 20)
-
-scene.background = twinklebg
-
-scene.add(
-  rahulMesh,
-  githubMesh,
-  mediumMesh,
-  emailMesh,
-  twitterMesh,
-  //   instagramMesh,
-  linkedinMesh
-)
-
-// point light
-var pointLight = new THREE.PointLight(0xffffff)
-pointLight.position.set(0, 0, 0)
-scene.add(pointLight)
-
-//point light helper
-// var pointLightHelper = new THREE.PointLightHelper(pointLight)
-// scene.add(pointLightHelper)
-
-//ambient light
-var ambientLight = new THREE.AmbientLight(0xffffff)
-scene.add(ambientLight)
-
-var mmi = new MouseMeshInteraction(scene, camera)
-
-mmi.addHandler('github', 'click', function (e) {
-  window.open('https://github.com/RGTechno')
-})
-mmi.addHandler('linkedin', 'click', function (e) {
-  window.open('https://www.linkedin.com/in/rgtechno/')
-})
-mmi.addHandler('medium', 'click', function (e) {
-  window.open('https://rgtechno.medium.com/')
-})
-mmi.addHandler('twitter', 'click', function (e) {
-  window.open('https://twitter.com/_rgtechno_')
-})
-mmi.addHandler('email', 'click', function (e) {
-  window.open('mailto:w.rahulgandhi@gmail.com')
-})
-
-//grid helper
-// var gridHelper = new THREE.GridHelper(200, 50)
-// scene.add(gridHelper)
-
-//orbit controls
-var controls = new OrbitControls(camera, renderer.domElement)
-controls.minDistance = 150
-controls.maxDistance = 300
-
-function addStar() {
-  let geometry = new THREE.SphereGeometry(0.1)
-  let material = new THREE.MeshStandardMaterial({ color: 0xffffff })
-
-  let star = new THREE.Mesh(geometry, material)
-
-  const [x, y, z] = Array(3)
-    .fill()
-    .map(() => THREE.MathUtils.randFloatSpread(100))
-
-  star.position.set(x, y, z)
-  scene.add(star)
+for (let i = 0; i < 8000; i++) {
+  const comet = new THREE.Vector3(
+    Math.random() * 600 - 300,
+    Math.random() * 600 - 300,
+    Math.random() * 600 - 300
+  )
+  comet.velocity = 1
+  comet.acceleration = 0.03
+  cometsGeometry.vertices.push(comet)
 }
 
-Array(500).fill().forEach(addStar)
+var star = new THREE.TextureLoader().load('./images/circle.png')
+var starMat = new THREE.PointsMaterial({
+  color: 0xaaaaaaa,
+  size: 0.7,
+  map: star,
+})
+
+const comets = new THREE.Points(cometsGeometry, starMat)
+scene.add(comets)
+
+//orbit controls
+// var controls = new OrbitControls(camera, renderer.domElement)
+// controls.minDistance = 150
+// controls.maxDistance = 300
 
 function animate() {
   requestAnimationFrame(animate)
 
-  rahulMesh.rotation.x += 0.002
-  rahulMesh.rotation.y -= 0.02
-  rahulMesh.rotation.z += 0.003
+  cometsGeometry.vertices.forEach((c) => {
+    c.velocity += c.acceleration
 
-  controls.update() //updates camera pers
+    c.y -= c.velocity
+    if (c.y < -200) {
+      c.y = 200
+      c.velocity = 0
+    }
+  })
+  cometsGeometry.verticesNeedUpdate = true
+  comets.rotation.y += 0.002
+  // camera.rotation.y+=0.0003
 
-  mmi.update()
+  // controls.update() //updates camera pers
 
   renderer.render(scene, camera)
 }
