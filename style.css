@@ -46,14 +46,21 @@ body {
   transform: translateZ(20px);
 }
 
-.socials:hover{
-  box-shadow: 2px 2px 2px 2px gray;
+.socials:hover {
+  box-shadow: 2px 2px 2px 2px dimgray;
+  background: linear-gradient(45deg, #a8c0ff,#3f2b96);
 }
 
 #me {
   color: white;
-  font-size: 50pt;
-  margin: 20px;
+  font-size: 35pt;
+  /* margin: 20px; */
+}
+#about {
+  color: white;
+  font-size: 25pt;
+  margin-top: 5px;
+  margin-bottom: 20px;
 }
 
 .socialIcon {
