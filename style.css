@@ -25,9 +25,10 @@ body {
 }
 
 .socialDiv {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
 }
 
 .socials {
@@ -48,7 +49,7 @@ body {
 
 .socials:hover {
   box-shadow: 2px 2px 2px 2px dimgray;
-  background: linear-gradient(45deg, #a8c0ff,#3f2b96);
+  background: linear-gradient(45deg, #a8c0ff, #3f2b96);
 }
 
 #me {
@@ -69,4 +70,81 @@ body {
 
 .tilt {
   transform-style: preserve-3d;
+}
+
+/* media queries */
+
+/* Tablets */
+@media (min-width: 481px) and (max-width: 700px) {
+  .socialDiv {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+  }
+
+  #me {
+    color: white;
+    font-size: 20pt;
+  }
+  #about {
+    color: white;
+    font-size: 15pt;
+    margin-top: 5px;
+  }
+}
+
+/* Phones */
+@media (max-width: 480px) {
+  .socialDiv {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+  }
+  .socials {
+    width: 50vw;
+    height: 1vh;
+  }
+
+  .socials:active {
+    box-shadow: 2px 2px 2px 2px dimgray;
+    background: linear-gradient(45deg, #a8c0ff, #3f2b96);
+  }
+
+  #me {
+    color: white;
+    font-size: 20pt;
+  }
+  #about {
+    color: white;
+    font-size: 15pt;
+    margin-top: 5px;
+  }
+}
+
+@media (max-width: 320px) {
+  .socialDiv {
+    display: flex;
+    flex-direction: column;
+  }
+  .socials {
+    width: 30vw;
+    height: 1vh;
+  }
+
+  .socials:active {
+    box-shadow: 2px 2px 2px 2px dimgray;
+    background: linear-gradient(45deg, #a8c0ff, #3f2b96);
+  }
+
+  #me {
+    color: white;
+    font-size: 12pt;
+  }
+  #about {
+    color: white;
+    font-size: 10pt;
+    margin-top: 5px;
+  }
 }
