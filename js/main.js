@@ -59,7 +59,7 @@ scene.add(wheel)
 // controls.minDistance = 150
 // controls.maxDistance = 300
 
-var val = 0.005
+// var val = 0.005
 
 function animate() {
   requestAnimationFrame(animate)
@@ -75,15 +75,8 @@ function animate() {
   })
   cometsGeometry.verticesNeedUpdate = true
   comets.rotation.y += 0.002
-  // camera.rotation.y+=0.0003
 
-  if (val < 0) {
-    wheel.rotation.z += 2 * val
-  } else wheel.rotation.z += val
-  setInterval(() => {
-    val = -val
-  }, 5000)
-
+  wheel.rotation.z += 0.004
   // controls.update() //updates camera pers
 
   renderer.render(scene, camera)
