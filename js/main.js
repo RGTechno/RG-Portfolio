@@ -1,21 +1,6 @@
 // import { MouseMeshInteraction } from './three_mmi.js'
 //import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/controls/OrbitControls.js'
 
-new TypeIt('#about', {
-  loop: true,
-  loopDelay: 500,
-  waitUntilVisible: true,
-})
-  .type('<br>A Comedy Lover !')
-  .pause(200)
-  .delete(14, { delay: 200 })
-  .type('Web Developer')
-  .pause(200)
-  .delete(13, { delay: 200 })
-  .type('Flutter Developer')
-  .pause(200)
-  .go()
-
 // THREE JS
 const scene = new THREE.Scene()
 scene.background = new THREE.Color(0x1d1d1d)
@@ -93,9 +78,8 @@ function animate() {
   // camera.rotation.y+=0.0003
 
   if (val < 0) {
-    wheel.rotation.z += 2*val
-  }
-  else wheel.rotation.z += val
+    wheel.rotation.z += 2 * val
+  } else wheel.rotation.z += val
   setInterval(() => {
     val = -val
   }, 5000)
